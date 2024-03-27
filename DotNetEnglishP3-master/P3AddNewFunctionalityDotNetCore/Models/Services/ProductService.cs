@@ -25,6 +25,10 @@ namespace P3AddNewFunctionalityDotNetCore.Models.Services
             _orderRepository = orderRepository;
             _localizer = localizer;
         }
+        /// <summary>
+        /// Take all products in the inventory to create MapToViewModel
+        /// </summary>
+        /// <returns></returns>
         public List<ProductViewModel> GetAllProductsViewModel()
         {
              
@@ -32,6 +36,11 @@ namespace P3AddNewFunctionalityDotNetCore.Models.Services
             return MapToViewModel(productEntities);
         }
 
+        /// <summary>
+        /// For each product from the List<Product> convert ToString and instance in the List<ProductVieawModel>  
+        /// </summary>
+        /// <param name="productEntities"></param>
+        /// <returns></returns>
         private static List<ProductViewModel> MapToViewModel(IEnumerable<Product> productEntities)
         {
             List <ProductViewModel> products = new List<ProductViewModel>();
@@ -50,7 +59,10 @@ namespace P3AddNewFunctionalityDotNetCore.Models.Services
 
             return products;
         }
-
+        /// <summary>
+        /// Get All Product in the inventory
+        /// </summary>
+        /// <returns></returns>
         public List<Product> GetAllProducts()
         {
             IEnumerable<Product> productEntities = _productRepository.GetAllProducts();
